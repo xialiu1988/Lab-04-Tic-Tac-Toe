@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
-    class Game
+ class Game
     {
         public Player PlayerOne { get; set; }
         public Player PlayerTwo { get; set; }
@@ -45,6 +45,48 @@ namespace Lab04_TicTacToe.Classes
                 and make sure that the game continues while there are unmarked spots on the board. 
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
+
+            //initiate the first round, default is player1 makes first move,so player's turn is true and player2's turn should be flase, not his turn yet
+
+            PlayerOne.Marker = "X";
+            PlayerOne.IsTurn = true;
+
+            //playerTwo's information
+
+            PlayerTwo.Marker = "O";
+            PlayerTwo.IsTurn = false;
+
+            //how many times player move,no more than 9 times total,cuz only 9 spots
+            int i = 0;
+            bool gameOver=false;
+            while (gameOver==false && i < 9)
+            {
+                Console.WriteLine("    ");
+                Board.DisplayBoard();
+                NextPlayer().TakeTurn(Board);
+              gameOver = CheckForWinner(Board);
+                SwitchPlayer();
+                i++;
+            }
+            Console.WriteLine("    ");
+            Console.WriteLine("    ");
+
+            Board.DisplayBoard();
+            if (gameOver == true)
+            {
+                SwitchPlayer();
+                return NextPlayer();
+            }
+            if (i == 9)
+            {
+                Console.WriteLine("NO Winner for this game!");
+            }
+
+
+
+            return null;
+
+
         }
 
 
@@ -82,6 +124,8 @@ namespace Lab04_TicTacToe.Classes
 
                 // TODO:  Determine a winner has been reached. 
                 // return true if a winner has been reached. 
+
+                if (a == "X" && b == "X" && c == "X" || a == "O" && b == "O" && c == "O") return true;
 
             }
 
