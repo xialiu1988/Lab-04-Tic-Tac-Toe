@@ -58,5 +58,27 @@ namespace gameTDD
         }
 
 
+
+
+        [Fact]
+        public void WillNOtReturnWinner()
+        {
+            Player p1 = new Player();
+            Player p2 = new Player();
+            Game game = new Game(p1, p2);
+
+            game.Board.GameBoard = new string[,]
+            {
+                {"X", "O", "X"},
+                {"O", "X", "O"},
+                {"O", "X", "O"},
+            };
+
+            Assert.False(game.CheckForWinner(game.Board));
+        }
+
+
+
+
     }
 }
