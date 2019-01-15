@@ -49,11 +49,33 @@ namespace gameTDD
            
             p1.IsTurn = true;
             int position = 2;
-         Position position2=Player.PositionForNumber(position);
-            
-            Assert.Equal(position2,p1.GetPosition(game.Board));
+             Position position2=Player.PositionForNumber(position);
+           Position newpo = new Position(0, 1);
 
-}
+            Assert.Equal(newpo.Column,position2.Column);
+            Assert.Equal(newpo.Row,position2.Row);
+
+        }
+
+
+
+
+        [Fact]
+        public void WillNOtReturnWinner()
+        {
+            Player p1 = new Player();
+            Player p2 = new Player();
+            Game game = new Game(p1, p2);
+
+            game.Board.GameBoard = new string[,]
+            {
+                {"X", "O", "X"},
+                {"O", "X", "O"},
+                {"O", "X", "O"},
+            };
+
+            Assert.False(game.CheckForWinner(game.Board));
+        }
 
 
 
