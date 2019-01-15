@@ -32,7 +32,7 @@ namespace Lab04_TicTacToe.Classes
         }
 
 
-        public static Position PositionForNumber(int position)
+        public  static Position PositionForNumber(int position)
         {
             switch (position)
             {

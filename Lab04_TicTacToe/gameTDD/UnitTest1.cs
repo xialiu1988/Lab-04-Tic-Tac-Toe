@@ -49,13 +49,13 @@ namespace gameTDD
            
             p1.IsTurn = true;
             int position = 2;
-         Position position2=Player.PositionForNumber(position);
-            
-            Assert.Equal(position2,p1.GetPosition(game.Board));
+             Position position2=Player.PositionForNumber(position);
+           Position newpo = new Position(0, 1);
 
-}
+            Assert.Equal(newpo.Column,position2.Column);
+            Assert.Equal(newpo.Row,position2.Row);
 
-
+        }
 
 
     }
